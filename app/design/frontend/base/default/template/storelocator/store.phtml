@@ -1,0 +1,136 @@
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=nT14Za4t7xVwP87w31VuhoxI"></script>
+
+<div class="block-store-locator">
+    <div class="store-locator">
+        <div class="col-l">
+
+            <h3><?php echo $this->__('查询店铺')?></h3>
+            <div class="location-error-wrap">
+                <div class="form-group">
+                    <label id="locator" class="location-checkbox">
+                        <input type="checkbox" name="location" value="1" />
+                        <i class="checkbox-before"></i>
+                        <i class="checkbox-checked">X</i> <?php echo $this->__('定位当前位置')?>
+                    </label>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label"><?php echo $this->__('距离')?></label>
+                    <div class="control-item">
+                        <select id="distance" class="selectmenu" onchange="currentPosition()">
+                            <option value="500"><?php echo $this->__('500 米')?></option>
+                            <option value="1000"><?php echo $this->__('1000 米')?></option>
+                            <option value="5000"><?php echo $this->__('5000 米')?></option>
+                        </select>
+                    </div>
+                </div>
+             <p class="or-span"><?php echo $this->__('或者')?></p>
+        </div>
+            <div class="form-group">
+                <label class="location-checkbox checkbox checked hidden" id="locate-city">
+                    <input type="checkbox" name="city" checked="checked" value="1"/><i></i> 
+                    <?php echo $this->__('通过省市查询店铺')?></label>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label"><?php echo $this->__('省')?></label>
+                <div class="control-item">
+                    <select id="province" name="province" class="selectmenu">
+                        <option value=""><?php echo $this->__('无')?></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label"><?php echo $this->__('城市')?></label>
+                <div class="control-item">
+                    <select id="city" class="selectmenu">
+                        <option value="all"><?php echo $this->__('所有')?></option>
+                    </select>
+                </div>
+            </div>
+            <div style="" id="login-advice-container" class="error-text hidden">
+                <span id="store-advice-container-1"><div style="" id="advice-required-entry-login:province" class="validation-advice">请选择省市。</div></span>
+            </div>
+            <a id="btn-store-search" href="javascript:void(0);" title="<?php echo $this->__('查询')?>"><?php echo $this->__('查询')?></a>
+        </div>
+        <div class="col-r">
+<!--            <img id="store-img" class="store-img" src="--><?php //echo $this->getSkinUrl('images/');?><!--media/store-locator.jpg" alt="" title=""/>-->
+            <div id="allmap" style="width: 538px;height: 435px"></div>
+        </div>
+    </div>
+    <div class="store-list">
+        <table id="store-table" width="100%" cellpadding="0" cellspacing="0">
+            <thead>
+            <tr>
+                <th width="36%"><?php echo $this->__('店铺')?></th>
+                <th width="38%"><?php echo $this->__('店铺地址')?></th>
+                <th width="26%"><?php echo $this->__('路线')?></th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    storeData = <?php echo $this->getStores() ?>;
+</script>
+
+<style>
+    .store-locator{
+        float: left;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+    .store-locator > div{
+        float:left;
+    }
+    .store-locator > .col-l{
+        width:25%;
+        margin-right:4.5%;
+    }
+    .store-locator > .col-r{
+        width:70%;
+    }
+    .store-list{
+        clear: left;
+    }
+    .location-checkbox{
+        position:relative;
+        padding-left: 20px;
+    }
+    .location-checkbox input[type="checkbox"]{
+        position: absolute;
+        width: 15px;
+        height:15px;
+        top: 0;
+        left: 0;
+    }
+    .location-checkbox .checkbox-before,
+    .location-checkbox .checkbox-checked{
+        background-color: white;
+        border: 1px solid #b6b6b6;
+        border-radius: 5px;
+        height: 15px;
+        left: 0;
+        line-height: 15px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        width: 15px;
+        opacity: 0.51;
+    }
+    .location-checkbox input[type='checkbox']{
+        opacity: 0;
+    }
+    .location-checkbox .checkbox-checked{
+        display:none;
+    }
+    .location-checkbox.checked .checkbox-checked{
+        display:block;
+    }
+
+</style>
+
+

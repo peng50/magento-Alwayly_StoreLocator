@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Alwayly_StoreLocator>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Alwayly_StoreLocator>
+    </modules>
+</config>

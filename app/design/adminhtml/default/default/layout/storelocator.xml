@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <storelocator_adminhtml_stores_index>
+        <reference name="content">
+            <block type="storelocator/adminhtml_store" name="stores.block" />
+        </reference>
+    </storelocator_adminhtml_stores_index>
+    <storelocator_adminhtml_stores_grid>
+        <reference name="root">
+            <block type="storelocator/adminhtml_store_grid" name="root" output="toHtml" />
+        </reference>
+    </storelocator_adminhtml_stores_grid>
+    <storelocator_adminhtml_stores_edit>
+        <update handle="editor" />
+        <reference name="content">
+            <block type="storelocator/adminhtml_store_edit" name="store_edit" />
+        </reference>
+        <reference name="left">
+            <block type="storelocator/adminhtml_store_edit_tabs" name="store_edit_tabs">
+                <block type="storelocator/adminhtml_store_edit_tab_main" name="store_edit_tab_main" />
+                <action method="addTab"><name>main_section</name><block>store_edit_tab_main</block></action>
+            </block>
+        </reference>
+    </storelocator_adminhtml_stores_edit>
+</layout>

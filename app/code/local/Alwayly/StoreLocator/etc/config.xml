@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <modules>
+        <Alwayly_StoreLocator>
+            <version>1.0.1</version>
+        </Alwayly_StoreLocator>
+    </modules>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <use>admin</use>
+                <args>
+                    <modules>
+                        <storelocator before="Mage_Adminhtml">Alwayly_StoreLocator_Adminhtml</storelocator>
+                        <frontName>storelocator</frontName>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <layout>
+            <updates>
+                <storelocator>
+                    <file>storelocator.xml</file>
+                </storelocator>
+            </updates>
+        </layout>
+        <menu>
+            <system>
+                <children>
+                    <stores_map translate="title" module="storelocator">
+                        <title>Stores Map</title>
+                        <action>storelocator/adminhtml_stores/</action>
+                        <sort_order>57</sort_order>
+                    </stores_map>
+                </children>
+            </system>
+        </menu>
+    </adminhtml>
+
+    <admin>
+        <routers>
+            <storelocator>
+                <use>admin</use>
+                <args>
+                    <module>Alwayly_StoreLocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </storelocator>
+        </routers>
+    </admin>
+
+    <frontend>
+        <routers>
+            <storelocator>
+                <use>standard</use>
+                <args>
+                    <module>Alwayly_StoreLocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </storelocator>
+        </routers>
+        <layout>
+            <updates>
+                <storelocator module="Alwayly_StoreLocator">
+                    <file>storelocator.xml</file>
+                </storelocator>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <models>
+            <storelocator>
+                <class>Alwayly_StoreLocator_Model</class>
+                <resourceModel>storelocator_resource</resourceModel>
+            </storelocator>
+            <storelocator_resource>
+                <class>Alwayly_StoreLocator_Model_Resource</class>
+                <entities>
+                    <store>
+                        <table>store_locator</table>
+                    </store>
+                </entities>
+            </storelocator_resource>
+        </models>
+        <resources>
+            <storelocator_setup>
+                <setup>
+                    <module>Alwayly_StoreLocator</module>
+                    <class>Alwayly_StoreLocator_Model_Resource_Setup</class>
+                </setup>
+            </storelocator_setup>
+        </resources>
+        <helpers>
+            <storelocator>
+                <class>Alwayly_StoreLocator_Helper</class>
+            </storelocator>
+        </helpers>
+
+        <blocks>
+            <storelocator>
+                <class>Alwayly_StoreLocator_Block</class>
+            </storelocator>
+
+        </blocks>
+
+    </global>
+
+</config>
